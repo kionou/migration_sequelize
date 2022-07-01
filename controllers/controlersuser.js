@@ -5,12 +5,14 @@ const Usercontrolleur = class {
         let Userd =  await  dataUser.InsertionUser(req.body);
         console.log('usderd');
         if (Userd.erreur) {
-              const erreur = Userd.erreur.errors.reduce((accumulator, value) => {
-                return {...accumulator, [value.path]: value.message};
-              }, {});
+            //   const erreur = Userd.erreur.errors.reduce((accumulator, value) => {
+            //     return {...accumulator, [value.path]: value.message};
+            //   }, {});
               console.log('oblj',Userd.erreur);
            
-             res.json({"erreur de validation":erreur})
+            //  res.json({"erreur de validation":erreur})
+             res.json({"erreur de validation":Userd.erreur})
+
 
         } else {
             res.json(Userd.success.toJSON())

@@ -7,10 +7,11 @@ const users = User(data,Sequelize);
 
 const dataUser = class{
     static InsertionUser=  (into)=>{
+        console.log('innnto',into);
         // return   users.sync({force:true}).then(()=>{
-            let{nom,prenom,email,numero,password}=into;
+            let{nom,prenom,email,numero}=into;
             return new Promise(async (next)=>{
-               users.create({nom,prenom,email,numero,password})
+               users.create({nom,prenom,email,numero})
                 .then(resultat=>{
                 console.log('ss',resultat);
                 next({
