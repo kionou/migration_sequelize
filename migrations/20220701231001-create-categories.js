@@ -7,10 +7,11 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
+       
       },
       nom: {
         type: Sequelize.STRING,
-        allowNull: false,
+         allowNull: false,
         unique:true
       },
       createdAt: {

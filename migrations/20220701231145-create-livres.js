@@ -1,4 +1,6 @@
 'use strict';
+
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('livres', {
@@ -13,16 +15,18 @@ module.exports = {
         allowNull: false,
         unique:true
       },
-      dateCreer: {
-        type: Sequelize.STRING
+      dateApparution: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
-      categorieid:{
+      categories_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references:{
-          models:'categorie',
+          references:{
+          models:'categories',
           key:'id'
-        }
+     },
+
       },
       createdAt: {
         allowNull: false,
