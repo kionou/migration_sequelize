@@ -1,6 +1,11 @@
 const { request,response } = require("express");
 const dataUser = require("../others/requeteUser");
 const Usercontrolleur = class {
+
+    static userGet = (req=request,res=response)=>{
+        res.render('index')
+    }
+
     static AccueilGet =  async (req=request,res=response) =>{
         let Userd =  await  dataUser.InsertionUser(req.body);
         console.log('usderd');
