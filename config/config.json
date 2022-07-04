@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "kionou",
-    "password": "12345",
-    "database": "database_development",
-    "host": "192.168.64.2",
+    "username": "root",
+    "password": "",
+    "database": "migration_sequelize",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {

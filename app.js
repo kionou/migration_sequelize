@@ -6,8 +6,10 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+let categorieRouter = require('./routes/categorie')
 const sequelize = require('./database/connecterData');
-sequelize
+const  session = require('express-session');
+
 var app = express();
 
 try {
@@ -25,9 +27,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({ 
+      secret: 'keyboard cat',
+      resave: false,
+      saveUninitialized: true,
+      cookie: { maxAge: 60000 * 60 * 60 * 24 }
+}))
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/categorie',categorieRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

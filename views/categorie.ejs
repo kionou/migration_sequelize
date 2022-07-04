@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
+    <link rel='stylesheet' href='/stylesheets/categorie.css' />
+    <title>Categorie</title>
+</head>
+<body>
+    <section class="vh-100 bg-image"
+        style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="card" style="border-radius: 15px;">
+                            <% if (typeof alert !="undefined" && alert) { %>
+                                <p class="validation">
+                                    <%= alert %>
+                                </p>
+                                <% }%>
+                            <div class="card-body p-5">
+                                <div class="d-flex justify-content-center align-items-center border border-danger p-4 ">
+                                    <button class="btn btn-primary me-3" data-mdb-toggle="modal" data-mdb-target="#exampleModal">ajouter</button>
+                                    <button class="btn btn-success  me-3" data-mdb-toggle="modal" data-mdb-target="#exampleModale">update</button>
+                                    <button class="btn btn-danger  me-3">delete</button>
+                                    <!-- <button class="btn btn-primary  me-3">ajouter</button> -->
+
+                                </div>
+                                <% if (categorie == "" ) { %>
+                                  <p>rien</p>
+                                    <% } else if (categorie ){%>
+                                        <% categorie.forEach(function(categorie){ %>
+                                <div class="d-flex justify-content-center flex-wrap border ">
+                                    <a class="m-3" href="#">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <p class="card-text"><%= categorie.nom %></p>
+                                            </div>
+                                        </div>
+                                    </a>  
+                                </div>
+                                <% }); %>
+                                    <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="exampleModalLabel">Ajouter un genre</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/categorie">
+                        <div class="form-outline mb-4">
+                            <input type="text" id="form1Example1" name="nom" class="form-control" />
+                            <label class="form-label" for="form1Example1">Genre litteraire</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Valider</button>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModale" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">..jfjfjfjkf.</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
+</body>
+</html>
