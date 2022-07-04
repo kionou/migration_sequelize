@@ -37,3 +37,9 @@
     color: red;
     text-align: center;
 }
+
+
+select{
+    text-align: center;
+    width: 120px;
+  }

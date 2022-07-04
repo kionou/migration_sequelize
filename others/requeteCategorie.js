@@ -40,6 +40,19 @@ const dataCategorie = class{
             }) 
         })
     }
+
+    static UpdateCategorie = (into)=>{
+        return new Promise(async (next)=>{
+            let {nom,id}=into
+            categorie.update({nom},{where :{id}}).then(resultat => {
+                console.log('resultat',resultat);
+                next({success:resultat})
+            }).catch(error  =>{
+                console.log('error',error);
+                  next({erreur:error})
+            }) 
+        })
+    }
 }
 
 
