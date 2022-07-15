@@ -32,7 +32,7 @@ const Usercontrolleur = class {
              if (passwordUser) {
               req.session.user = dataUser;
               console.log('ma session est :',req.session);
-                res.json(req.session)
+                res.redirect('/categorie')
              } else {
               res.render('index',{alerte:'Mot de passe incorrect'})
              }

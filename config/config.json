@@ -1,10 +1,11 @@
 {
   "development": {
-    "username": "root",
-    "password": "",
+    "username": "postgres",
+    "password": "Laloi2015",
     "database": "migration_sequelize",
     "host": "localhost",
-    "dialect": "mysql"
+    "dialect": "postgres",
+    "port":"5432"
   },
   "test": {
     "username": "root",
@@ -13,11 +14,14 @@
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
-  "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  }
+"production": {
+  "use_env_variable": "DATABASE_URL",
+  "dialect": "postgres",
+  "dialectOptions": {
+     "ssl": {
+       "require": true,
+       "rejectUnauthorized": false
+     }
+   }
+ }
 }

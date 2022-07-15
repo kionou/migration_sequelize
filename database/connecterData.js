@@ -5,9 +5,10 @@ const  Sequelize  = require("sequelize")
 //     host:'192.168.64.2',
 // })
 
-let sequelize = new Sequelize("migration_sequelize","root","",{
-    dialect:'mysql',
+let sequelize = new Sequelize("migration_sequelize","postgres","Laloi2015",{
+    dialect:'postgres',
     host:'localhost',
+    port:'5432'
 })
 
 module.exports=sequelize;
