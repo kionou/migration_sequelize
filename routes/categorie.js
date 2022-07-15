@@ -5,6 +5,7 @@ var router = express.Router();
 
 router.get('/',CategorieControlleur.AccueilGet)
 router.post('/',CategorieControlleur.AccueilPost)
+router.post('/update',CategorieControlleur.Update)
 
 
 

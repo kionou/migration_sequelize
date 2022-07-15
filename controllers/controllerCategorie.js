@@ -28,6 +28,19 @@ const CategorieControlleur = class{
               res.render('categorie',{categorie:Categorie.success,alert:'Ce genre existe déjà'})
      }
     }
+
+
+    static Update = async (req=request,res=response)=>{
+        console.log('ffff',req.body);
+        let Update = await dataCategorie.UpdateCategorie(req.body)
+        if (Update.success) {
+            res.redirect('/categorie')
+        } else {
+            console.log('erroro',Update.erreur);
+        }
+   
+        
+    }
 }
 
 
