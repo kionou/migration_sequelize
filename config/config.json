@@ -15,9 +15,14 @@
     "dialect": "mysql"
   },
 "production": {
-  "use_env_variable": "DATABASE_URL",
-  "dialect": "postgres",
-  "dialectOptions": {
+    "username": "mcipqphisfhhgn",
+    "password": "95ebe751c66eecfecb3b91006a9163155af1c3377a3bcff7e74cb71d33d5c2ae",
+    "database": "dfecba7nk0tfdu",
+    "host": "ec2-54-228-125-183.eu-west-1.compute.amazonaws.com",
+    "dialect": "postgres",
+    "port":"5432",
+    "ssl":true,
+    "dialectOptions": {
      "ssl": {
        "require": true,
        "rejectUnauthorized": false

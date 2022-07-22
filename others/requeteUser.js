@@ -23,13 +23,6 @@ const dataUser = class{
     }
 
 
-
-
-
-
-
-
-
     static InsertionUser=  (into)=>{
         console.log('innnto',into);
         // return   users.sync().then(()=>{
