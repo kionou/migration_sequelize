@@ -11,18 +11,17 @@ const  Sequelize  = require("sequelize")
 //     port:'5432'
 // })
 
-let sequelize = new Sequelize("migration_sequelize","postgres","Laloi2015",{
+let sequelize = new Sequelize(process.env.DATABASE_URL,{
     dialect:'postgres',
     protocol: 'postgres',
-    host:'localhost',
-    port:'5432',
-    //  dialectOptions: {
-    //      ssl: {
-    //          require: true,
-    //          rejectUnauthorized: false
-    //      }
-    //  }
- 
+     dialectOptions: {
+         ssl: {
+             require: true,
+             rejectUnauthorized: false
+         }
+     }
+    // host:'localhost',
+    // port:'5432'
 })
 
 module.exports=sequelize;
