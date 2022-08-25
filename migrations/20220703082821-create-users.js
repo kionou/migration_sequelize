@@ -26,8 +26,32 @@ module.exports = {
         allowNull: false,
       },
       password: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false,
+
       },
+      profession: {
+        type: Sequelize.STRING,
+        allowNull: false,
+
+      },
+      image: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue:"images/image.jpg"
+
+      },
+      date_adheration: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue:new Date()
+
+      },
+      numero_carte: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

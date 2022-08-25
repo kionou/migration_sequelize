@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@600&family=GFS+Didot&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    /* background-color: blueviolet; */
+        font-family: 'GFS Didot', serif;
+    
+}
+
+.navbar {
+    margin-bottom: 20px;
+    font-size: 25px;
+    padding: 1.5625rem !important;
+}
+
+.main {
+    border: 1px solid rgb(225, 223, 223);
+    padding: 30px 100px;
+    border-radius: 10px;
+}
+
+.main-image {
+    /* border: 1px solid blue; */
+    width: 40%;
+    padding: 6px;
+}
+
+.main-texte {
+    /* border: 1px solid green; */
+        padding: 6px 40px;
+
+}
+
+.main-description{
+    border: 1px solid rgb(225, 223, 223);
+    border-radius: 10px;
+}
+.main-texte .titre{
+    font-size: 29px;
+    font-family: 'GFS Didot', serif;
+
+}

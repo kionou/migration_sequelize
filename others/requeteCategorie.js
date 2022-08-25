@@ -40,6 +40,20 @@ const dataCategorie = class{
             }) 
         })
     }
+    
+     static AfficheCategorieDetail = (into)=>{
+        return new Promise(async (next)=>{
+            categorie.findAll({where:{id:into}}).then(resultat => {
+                console.log('resultat',resultat);
+                next({success:resultat})
+            }).catch(error  =>{
+                console.log('error',error);
+                  next({erreur:error})
+            }) 
+        })
+    }
+
+      
 
     static UpdateCategorie = (into)=>{
         return new Promise(async (next)=>{

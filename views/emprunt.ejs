@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
+    <link rel='stylesheet' href='/stylesheets/emprunt.css' />
+    <title>Emprunt</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <a class="navbar-brand mt-2 mt-lg-0" href="/Accueil">
+                    BIBLIOTHEQUE
+                </a>
+            </div>
+
+            <div class="d-flex align-items-center">
+
+                <a class="text-reset me-3" href="/Accueil">
+                    Accueil
+                </a>
+                <a class="text-reset me-3" href="/Accueil/recherche">
+                    Recherche
+                </a>
+                <!-- <a class="text-reset me-3" href="#">
+                    Accueil
+                </a> -->
+
+                <div class="dropdown">
+                    <% if (typeof data !="undefined" && data.image  && data.nom) { %>
+                       
+                    <a class="dropdown-toggle d-flex align-items-center justify-content-center  hidden-arrow " href="#"
+                        id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <img src="/<%= data.image %>" class="rounded-circle border border-1 border-dark" height="50"
+                            alt="Black and White Portrait of a Man" loading="lazy" />
+                            <span class="ms-3 text-dark"><%= data.nom %></span>
+                    </a>
+                    <% }%>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                        <li>
+                            <a class="dropdown-item" href="/profil">My profile</a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/logout">Deconnecter</a>
+                        </li>
+                      
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+
+    <div class="container main d-flex flex-column justify-content-evenly align-content-center align-items-center" >
+            <h3 class="text-center">Tout les documents empruntés doivent etre retourner avant la date de retour ou le jour J </h3>
+        <div class="cadre d-flex justify-content-center align-content-center align-items-center">
+                <div class="main-cadre py-3 ">
+                    <p class="text-center fs-4">Vous voulez emprunter ce document : </p>
+                    <% if (livre=="" ) { %>
+                        <div class="container  main-livre d-flex justify-content-center"></div>
+                    <% } else if (livre ){%>
+                        <% livre.forEach(function(livre){ %>
+                    <div class="container main-livre d-flex justify-content-center">
+                        <div class="container main-image">
+                
+                            <img alt="example" class="img-fluid " src="/<%= livre.image %>" />
+                
+                        </div>
+                        <div class="container main-texte">
+                            <p class="text-center titre fw-bolder text-uppercase ">
+                                <%= livre.nom %> DE <%= livre.nom_auteur  %>
+                            </p>
+                            <div class="d-flex ">
+                                <p class="fw-bolder ">Nom: </p>
+                                <span class=" text-capitalize">
+                                <%= livre.nom %>
+                                </span>
+                            </div>
+                            <div class="d-flex ">
+                                <p class="fw-bolder">Auteur: </p>
+                                <span class=" text-capitalize">
+                                <%= livre.nom_auteur %>
+                                </span>
+                            </div>
+                            <div class="d-flex ">
+                                <p class="fw-bolder ">Date de parution: </p>
+                                <span class="">
+                                <%= livre.date_apparution %>
+                                </span>
+                            </div>
+                            <div class="d-flex ">
+                                <p class="fw-bolder ">EAN: </p>
+                                <span >
+                                <%= livre.code_livre %>
+                                    
+                                </span>
+                            </div>
+                
+                
+                        </div>
+                    </div>
+                 
+                    <form action="/emprunt" method="post">
+                        <div class="d-flex align-items-center mt-4">
+                            <label class="form-label " for="form3Example4cg">Date d'emprunte:</label>
+                            <input type="date" id="form3Example4cg " name="date_emprunt" class="form-control form-control-lg text-center" onchange="getObject(this)" />
+                        </div>
+                        <div class="d-flex align-items-center my-4 ">
+                            <label class="form-label" for="form3Example4cg">Date Retour:</label>
+                            <input type="text" id="retour" name="date_retour" class="form-control form-control-lg text-center" />
+                        </div>
+                            <input type="hidden" name="id_livre" value=" <%= livre.id %>">
+                            <input type="hidden" name="status" value="false">
+                            <% if (typeof data !="undefined" && data.id) { %>
+                               <input type="hidden" name="id_user" value="<%= data.id %>">
+                                <% }%>
+                        <div class="text-center">
+                        <button class="btn btn-primary ">Valider</button>
+                        </div>
+                    </form>
+                    <% }); %>
+                        <% } %>
+                </div>
+        </div>
+    
+    </div>
+ 
+    <footer class="bg-light text-center text-lg-start pt-5 ">
+
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2020 Copyright:
+            <a class="text-dark" href="https://mdbootstrap.com/">KionouBibiothèque.com</a>
+        </div>
+
+    </footer>
+
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
+    <script src="/javascripts/emprunt.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
+    <link rel='stylesheet' href='/stylesheets/profil.css' />
+    <title>profil</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <a class="navbar-brand mt-2 mt-lg-0" href="/Accueil">
+                    BIBLIOTHEQUE
+                </a>
+            </div>
+
+            <div class="d-flex align-items-center">
+
+                <a class="text-reset me-3" href="/Accueil">
+                    Accueil
+                </a>
+                <a class="text-reset me-3" href="/Accueil/recherche">
+                    Recherche
+                </a>
+                <!-- <a class="text-reset me-3" href="#">
+                    Accueil
+                </a> -->
+
+            <div class="dropdown">
+                <% if (typeof data !="undefined" && data.image && data.nom) { %>
+            
+                    <a class="dropdown-toggle d-flex align-items-center justify-content-center  hidden-arrow " href="#"
+                        id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <img src="/<%= data.image %>" class="rounded-circle border border-1 border-dark" height="50"
+                            alt="Black and White Portrait of a Man" loading="lazy" />
+                        <span class="ms-3 text-dark">
+                            <%= data.nom %>
+                        </span>
+                    </a>
+                    <% }%>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                            <li>
+                                <a class="dropdown-item" href="/profil">My profile</a>
+                            </li>
+            
+                            <li>
+                                <a class="dropdown-item" href="/logout">Deconnecter</a>
+                            </li>
+            
+                        </ul>
+            </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+<div class="container-fluid main">
+    <% if (user=="" ) { %>
+        <div class="container  mains-cartes d-flex justify-content-center p-3"></div>
+        <% } else if (user ){%>
+            <% user.forEach(function(user){ %>
+    <div class="container  mains-cartes d-flex justify-content-center p-3">
+        <div class="main-carte d-flex flex-column">
+            <div class="carte-header">
+                <p class="mb-0 text-center p-2 fs-5">BIBLIOTHEQUE NATIONALE DE COTE D'IVOIRE</p>
+            </div>
+            <div class="carte-body d-flex p-1">
+                <div class="image">
+                    <img src="<%= user.image %>" alt="">
+                </div>
+                <div class="texte d-flex flex-column justify-content-center">
+                    <div class="d-flex ">
+                        <p class="mb-0 fw-bolder fs-5">Nom:</p>
+                        <span class="fs-5 text-capitalize"><%= user.nom %></span>
+                    </div>
+                    <div class="d-flex">
+                        <p class="mb-0 fw-bolder fs-5">Prenom:</p>
+                        <span class="fs-5 text-capitalize"><%= user.prenom %></span>
+                    </div>
+                    <div class="d-flex">
+                        <p class="mb-0 fw-bolder fs-5">Profession:</p>
+                        <span class="fs-5 text-capitalize"><%= user.profession %></span>
+                    </div>
+                    <div class="d-flex">
+                        <p class="mb-0 fw-bolder fs-5">Date Adhesion:</p>
+                        <span class="fs-5 " id="date"><%= user.date_adheration %></span>
+                    </div>
+                </div>
+            </div>
+            <div class="carte-footer">
+                <P class="mb-0 text-center p-2 fs-5">NUMERO DE CARTE:<%= user.numero_carte %></P>
+            </div>
+        </div>
+    </div>
+        <% }); %>
+    <% } %>
+    <div class="container-fluid main-content d-flex mb-3">
+        <div class="liste-emprunte d-flex flex-column">
+            <p class="text-center fs-5 fw-bold">Mes Empruntes</p>
+            <span class="border border-dark"></span>
+            <% if (emprunt=="" ) { %>
+                <div class="emprunt fs-5 p-2 mt-2 d-flex justify-content-center align-items-center">
+                    <p>Vous aviez pas faire d'emprunte pour le moment</p>
+                </div>
+                <% } else if (emprunt ){%>
+            <div class="emprunt p-2 mt-2">
+                <% emprunt.forEach(function(emprunt){ %>
+                <div class="cadre-emprunt mt-3 d-flex align-items-center flex-column justify-content-center">
+                    <p class="fs-5 mb-0">Vous aviez emprunté un document intitile :</p>
+                    <span class="fs-5 fw-bold">Rebelle de Fatou keita</span>
+                    <div class="d-flex text-center">
+                        <p class="mb-0 fw-bolder fs-5">Date d'emprunt:</p>
+                        <span class="fs-5"><%= emprunt.date_emprunt %></span>
+                    </div>
+                    <div class="d-flex t">
+                        <p class="mb-0 fw-bolder fs-5">Date Retour:</p>
+                        <span class="fs-5"><%= emprunt.date_retour %></span>
+                    </div>
+                </div>
+                <% }); %>
+                 <!-- <div class="cadre-emprunt mt-3 d-flex align-items-center flex-column justify-content-center">
+                    <p class="fs-5 mb-0">Vous aviez emprunté un document intitile :</p>
+                    <span class="fs-5 fw-bold">Rebelle de Fatou keita</span>
+                    <div class="d-flex text-center">
+                        <p class="mb-0 fw-bolder fs-5">Date d'emprunt: </p>
+                        <span class="fs-5"> 01-08-2022</span>
+                    </div>
+                    <div class="d-flex t">
+                        <p class="mb-0 fw-bolder fs-5">Date Retour:</p>
+                        <span class="fs-5"> 01-08-2022</span>
+                    </div>
+                </div>
+
+                <div class="cadre-emprunt mt-3 d-flex align-items-center flex-column justify-content-center">
+                    <p class="fs-5 mb-0">Vous aviez emprunté un document intitile :</p>
+                    <span class="fs-5 fw-bold">Rebelle de Fatou keita</span>
+                    <div class="d-flex text-center">
+                        <p class="mb-0 fw-bolder fs-5">Date d'emprunt:</p>
+                        <span class="fs-5">01-08-2022</span>
+                    </div>
+                    <div class="d-flex t">
+                        <p class="mb-0 fw-bolder fs-5">Date Retour:</p>
+                        <span class="fs-5">01-08-2022</span>
+                    </div>
+                </div>
+                <div class="cadre-emprunt mt-3 d-flex align-items-center flex-column justify-content-center">
+                    <p class="fs-5 mb-0">Vous aviez emprunté un document intitile :</p>
+                    <span class="fs-5 fw-bold">Rebelle de Fatou keita</span>
+                    <div class="d-flex text-center">
+                        <p class="mb-0 fw-bolder fs-5">Date d'emprunt:</p>
+                        <span class="fs-5">01-08-2022</span>
+                    </div>
+                    <div class="d-flex t">
+                        <p class="mb-0 fw-bolder fs-5">Date Retour:</p>
+                        <span class="fs-5">01-08-2022</span>
+                    </div>
+                </div> -->
+            </div>
+            <% } %>
+          
+        </div>
+        <div class="update-user ">
+            <div class="text-center py-3">
+                <button  class="btn btn-primary boutton" id="boutton">Modifier mes informations</button>
+            </div>
+            <% if (user=="" ) { %>
+                <div class="container" id="formulaire"></div>
+                <% } else if (user ){%>
+                 <% user.forEach(function(user){ %>
+            <div class="container" id="formulaire">
+                    <form action="/profil/updateUser" class="main-formulaire  py-3 " method="post" enctype="multipart/form-data">
+
+                    <div class="main-image">
+                        <img src="/<%= user.image %>" id="photo">
+                        <input type="file" id="file" name="image">
+                        <label for="file" id="uploadBtn">Choisir Photo</label>
+                    </div>
+
+                    <div class="form-outline my-4">
+                        <input type="text" id="form12" name="nom" class="form-control"  value="<%= user.nom %>" placeholder="Nom"/>
+                        
+                    </div>
+                    <div class="form-outline mb-4">
+                           <input type="text" id="form12" name="prenom" class="form-control" value="<%= user.prenom %>" placeholder="Prenom" />
+
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="email" id="form12" name="email" class="form-control" value="<%= user.email %>" placeholder="Adresse Email" />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="tel" id="form12" name="numero" class="form-control" value="<%= user.numero %>" placeholder="Numero Téléphone" />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="form12" name="Profession" class="form-control" value="<%= user.profession %>" placeholder="Profession" />
+                    </div>
+                        <div>
+                            <button class="btn btn-primary">valider</button>
+                        </div>
+                        <input type="hidden" name="image" value="<%= user.image %>">
+                        <input type="hidden" name="id" value="<%= user.id %>">
+                    </form>
+                    
+            </div>
+            <% }); %>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+    <footer class="bg-light text-center text-lg-start pt-5 ">
+
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2020 Copyright:
+            <a class="text-dark" href="https://mdbootstrap.com/">KionouBibiothèque.com</a>
+        </div>
+
+    </footer>
+
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
+    <script src="https://kit.fontawesome.com/0eca8d30fc.js" crossorigin="anonymous"></script>
+    <script src="/javascripts/profil.js"></script>
+</body>
+
+</html>

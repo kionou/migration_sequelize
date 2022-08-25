@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@600&family=GFS+Didot&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* background-color: blueviolet; */
+    font-family: 'GFS Didot', serif;
+}
+
+.navbar {
+    font-size: 25px;
+    padding: 1.5625rem !important;
+}
+
+.main {
+    border: 1px solid red;
+}
+
+.main-lien {
+    padding: 9px 0;
+    font-size: 20px;
+}
+
+.main-lien p {
+    margin: 0 !important;
+}
+
+.main-categorie {
+    border: 1px solid rgb(225, 223, 223);
+    height: 80vh;
+    width: 30%;
+    margin-right: 6px;
+    border-radius: 10px;
+   
+    position: sticky;
+    top: 0;
+}
+
+.categorie{
+    /* border: 1px solid red; */
+    overflow-y: scroll;
+     scrollbar-width: thin;
+     height: 69vh;
+
+     
+}
+
+.main-livre {
+    /* border: 1px solid green; */
+    padding: 14px;
+    /* height: 100vh;
+    overflow-y: scroll;
+    scrollbar-width: thin; */
+
+    
+
+}
+
+.main-livres {
+    border: 1px solid rgb(225, 223, 223);
+    border-radius: 10px;
+}
+
+.main-search{
+    border: 1px solid rgb(225, 223, 223);
+    width: 70%;
+    border-radius: 10px;
+}
+
+.main-result{
+    border: 1Px solid red;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+/* .form-outline{
+    width: 98% !important;
+    max-width: 400px !important;
+} */
+
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+    animation: show .5s ease;
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.pagination {
+    display: flex;
+    width: 100%;
+    /* border: 1px solid red; */
+    align-items: center;
+    justify-content: center;
+}
+
+.prev,
+.next {
+    width: 62px;
+    height: 38px;
+    border: none;
+    background-color: rgb(23, 194, 190);
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.prev:hover,
+.next:hover {
+    background-color: hsl(240deg 7% 97%);
+    color: rgb(23, 194, 190);
+    border: 1px solid rgb(23, 194, 190);
+    cursor: pointer;
+}
+
+.pagination .prev.disabled,
+.pagination .next.disabled {
+    pointer-events: none;
+    background-color: rgb(1, 228, 224);
+
+}
+
+.page {
+    padding: 0 10px;
+}

@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@600&family=GFS+Didot&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* background-color: blueviolet; */
+    font-family: 'GFS Didot', serif;
+}
+
+.navbar {
+    font-size: 25px;
+    padding: 1.5625rem !important;
+}
+.main{
+    /* border: 1px solid red; */
+    height: 100vh;
+}
+.cadre{
+    border: 1px solid rgb(225, 223, 223);
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+}
+.main-livre {
+    border: 1px solid rgb(225, 223, 223);
+    /* padding: 30px 30px; */
+    border-radius: 10px;
+}
+
+.main .main-cadre {
+    /* border: 1px solid #ff0000; */
+  max-width: 700px;
+  width: 98%;
+  height: auto;
+
+}
+
+.main-image {
+    /* border: 1px solid blue; */
+    width: 40%;
+    padding: 6px;
+}
+
+.main-texte {
+    /* border: 1px solid green; */
+    padding: 6px 40px;
+
+}
+form{
+    /* border: 1px solid red; */
+    padding: 0 100px;
+}
+.form-label{
+    width: 210px;
+}

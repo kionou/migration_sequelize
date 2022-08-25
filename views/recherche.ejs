@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
+    <link rel='stylesheet' href='/stylesheets/recherche.css' />
+    <title>Accueil</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <a class="navbar-brand mt-2 mt-lg-0" href="/Accueil">
+                    BIBLIOTHEQUE
+                </a>
+            </div>
+
+            <div class="d-flex align-items-center">
+
+                <a class="text-reset me-3" href="/Accueil">
+                    Accueil
+                </a>
+                <a class="text-reset me-3" href="/Accueil/recherche">
+                    Recherche
+                </a>
+                <!-- <a class="text-reset me-3" href="#">
+                    Accueil
+                </a> -->
+<div class="dropdown">
+    <% if (typeof data !="undefined" && data.image && data.nom) { %>
+
+        <a class="dropdown-toggle d-flex align-items-center justify-content-center  hidden-arrow " href="#"
+            id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+            <img src="/<%= data.image %>" class="rounded-circle border border-1 border-dark" height="50"
+                alt="Black and White Portrait of a Man" loading="lazy" />
+            <span class="ms-3 text-dark">
+                <%= data.nom %>
+            </span>
+        </a>
+        <% }%>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                <li>
+                    <a class="dropdown-item" href="/profil">My profile</a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item" href="/logout">Deconnecter</a>
+                </li>
+
+            </ul>
+</div>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+
+    <div class="container-fluid main   p-4 my-3">
+        <div class="d-flex">
+                <div class="container main-categorie  ">
+                    <div class="d-flex flex-column">
+                        <p class="pt-4 text-center fs-5 fw-bolder">LA LISTE DES CATEGORIES</p>
+                        <span class="border border-dark"></span>
+                
+                        <% if (categorie=="" ) { %>
+                            <div class="container categorie d-flex flex-column justify-content-center mt-1">
+                                <p class="text-center pt-4">Il n'y a pas de genre oeuvre disponible pour le moment !</p>
+                            </div>
+                            <% } else if (categorie ){%>
+                                <div class="container categorie d-flex flex-column mt-1">
+                                    <% categorie.forEach(function(categorie){ %>
+                                        <a href="/Accueil/Categorie/<%= categorie.id %>" class="text-dark main-lien">
+                                            <p class="text-center text-uppercase">
+                                                <%= categorie.nom %>
+                                            </p>
+                                        </a>
+                                        <% }); %>
+                                            <!-- <a href="#" class="text-dark main-lien">
+                                        <p class="text-center">ROMAN</p>
+                                    </a>
+                
+                                    <a href="#">
+                                        <p class="text-center" style="font-size: 17px;">ROMAN</p>
+                                    </a>
+                                    
+                                    <a href="#" class="">
+                                        <p class="text-center">Roman</p>
+                                    </a>
+                                    <a href="#">
+                                        <p class="text-center">Roman</p>
+                                    </a>
+                                    <a href="#" class="">
+                                        <p class="text-center">Roman</p>
+                                    </a>
+                                    
+                                    
+                                    <a href="#">
+                                        <p class="text-center" style="font-size: 17px;">ROMAN</p>
+                                    </a>
+                                    
+                                    <a href="#" class="">
+                                        <p class="text-center">Roman</p>
+                                    </a>
+                                    <a href="#">
+                                        <p class="text-center">Roman</p>
+                                    </a>
+                                    <a href="#" class="">
+                                        <p class="text-center">Roman</p>
+                                    </a>
+                                    
+                                    <a href="#">
+                                        <p class="text-center" style="font-size: 17px;">ROMAN</p>
+                                    </a>
+                                    
+                                    <a href="#" class="">
+                                        <p class="text-center">Roman</p>
+                                    </a>
+                                    <a href="#">
+                                        <p class="text-center">Roman</p>
+                                    </a>
+                                    <a href="#" class="">
+                                        <p class="text-center">Roman</p>
+                                    </a> -->
+                
+                                </div>
+                                <% } %>
+                
+                
+                
+                
+                    </div>
+                </div>
+                <div class="container d-flex flex-column align-items-center align-items-center  main-livres py-3">
+                    <div class="container main-search py-5 d-flex align-items-center justify-content-center flex-column">
+                        <p class="fs-5 fw-bold m-0">Recherchez vos livres et documents ici</p>
+                        <p class="fs-5">pas Nom d'auteur ou Titre. </p>
+                        <form action="/Accueil/recherche" method="post">
+                            <div class="form-outline " style="width: 400px; max-width:98%;">
+                                <input type="text" id="form12" name="nom" class="form-control fs-5" />
+                                <!-- <label class="form-label" for="form12">Example label</label> -->
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-primary mt-3">recherche</button>
+                
+                            </div>
+                
+                        </form>
+                    </div>
+                    <!-- <div class="container main-result mt-5 d-flex justify-content-center align-content-center align-items-center">
+                                <p class="fs-4">Lorem ipsum dolor sit amet consectetur, 
+                                    adipisicing elit. Dignissimos est repudiandae 
+                                    fuga beatae laboriosam placeat. Doloremque beatae
+                                     eum nam aspernatur?</p>
+                            </div> -->
+                    <% if (search=="" ) { %>
+                        <div
+                            class="container main-result mt-5 d-flex flex-column justify-content-center align-content-center align-items-center">
+                            <p class="fw-bolder fs-4 text-center">Resultat de mon recherche</p>
+                            <div class="container d-flex justify-content-center">
+                                <p class="mt-5 fs-4">Aucun resultat trouve!</p>
+                            </div>
+                        </div>
+                        <% } else if (search ){%>
+                            <div
+                                class="container main-result mt-5 d-flex flex-column justify-content-center align-content-center align-items-center">
+                                <p class="fw-bolder fs-4 text-center">Resultat de mon recherche</p>
+                
+                                <div class="container main-livre">
+                                    <div class="row  row-cols-md-5 livres d-flex justify-content-center g-4 py-1">
+                
+                                        <% search.forEach(function(search){ %>
+                                            <div class="col">
+                                                <div class="card ">
+                                                    <img src="/<%= search.image %>" class="" alt="Skyscrapers" />
+                                                    <a href="/Accueil/detail/<%= search.id %>">
+                                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                
+                                            <% }); %>
+                                                <!--                 
+                                        <div class="col">
+                                            <div class="card h-100">
+                                                <img src="https://img.uscri.be/pth/dc9defbec4150b91b568a5dd5f788dc45cd78a82" class="card-img-top"
+                                                    alt="Skyscrapers" />
+                                                <a href="#!">
+                                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="col">
+                                            <div class="card h-100">
+                                                <img src="https://cdn1.booknode.com/book_cover/4929/soeurs_de_sang_tome_3_les_ailes_tenebreuses-4929221-264-432.jpg"
+                                                    class="card-img-top" alt="Skyscrapers" />
+                                
+                                            </div>
+                                        </div>
+                                
+                                        <div class="col">
+                                            <div class="card h-100">
+                                                <img src="/images/51TPBENPS0L._SX195_.jpg" class="card-img-top" alt="Skyscrapers" />
+                                
+                                            </div>
+                                        </div>
+                                
+                                        <div class="col">
+                                            <div class="card h-100">
+                                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp" class="card-img-top"
+                                                    alt="Skyscrapers" />
+                                
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card h-100">
+                                                <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp" class="card-img-top"
+                                                    alt="Skyscrapers" />
+                                
+                                            </div>
+                                        </div>
+                                
+                                        <div class="col">
+                                            <div class="card h-100">
+                                                <img src="https://images-na.ssl-images-amazon.com/images/I/51TPBENPS0L._SX195_.jpg" class=""
+                                                    alt="Skyscrapers" />
+                                                <a href="#!">
+                                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="col">
+                                            <div class="card h-100">
+                                                <img src="https://images-na.ssl-images-amazon.com/images/I/51TPBENPS0L._SX195_.jpg" class=""
+                                                    alt="Skyscrapers" />
+                                                <a href="#!">
+                                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="col">
+                                            <div class="card h-100">
+                                                <img src="https://images-na.ssl-images-amazon.com/images/I/51TPBENPS0L._SX195_.jpg" class=""
+                                                    alt="Skyscrapers" />
+                                                <a href="#!">
+                                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="col">
+                                            <div class="card h-100">
+                                                <img src="https://images-na.ssl-images-amazon.com/images/I/51TPBENPS0L._SX195_.jpg" class=""
+                                                    alt="Skyscrapers" />
+                                                <a href="#!">
+                                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="col">
+                                            <div class="card h-100">
+                                                <img src="https://images-na.ssl-images-amazon.com/images/I/51TPBENPS0L._SX195_.jpg" class=""
+                                                    alt="Skyscrapers" />
+                                                <a href="#!">
+                                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                                </a>
+                                            </div>
+                                        </div> -->
+                
+                                    </div>
+                
+                
+                                    <!--         
+                                                <div class="card  ">
+                                                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                                                        <img src="https://mdbootstrap.com/img/new/standard/nature/111.webp" class="img-fluid" />
+                                                        <a href="#!">
+                                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                                                        </a>
+                                                    </div>
+                                                        </div> -->
+                    <div class="pagination">
+                        <div class="prev">Prev</div>
+                        <div class="page">Page <span class="page-num"></span></div>
+                        <div class="next">Next</div>
+                    </div>
+
+                                </div>
+                             
+                            </div>
+                            <% } %>
+                
+                </div>
+        </div>
+   
+
+
+    <footer class="bg-light text-center text-lg-start pt-5">
+
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2020 Copyright:
+            <a class="text-dark" href="https://mdbootstrap.com/">KionouBibiothèque.com</a>
+        </div>
+
+    </footer>
+
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
+    <script src="/javascripts/app.js"></script>
+</body>
+
+</html>

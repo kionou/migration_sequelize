@@ -11,16 +11,23 @@ module.exports = {
       nom: {
         type: Sequelize.STRING
       },
-      dateApparution: {
+      nom_auteur: {
         type: Sequelize.STRING
       },
-      categories_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        // references:{
-        //   models:'cathegories',
-        //   key:'id'
-        // }
+      date_apparution: {
+        type: Sequelize.STRING
+      },
+      code_livre: {
+        type: Sequelize.STRING
+      },
+      categorie_id: {
+        type: Sequelize.INTEGER
+      },
+      description: {
+        type: Sequelize.TEXT
+      },
+      image: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

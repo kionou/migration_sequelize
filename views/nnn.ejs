@@ -1,0 +1,150 @@
+<div class="cathegorie">
+    <div class="cathegorie-header">
+        <div class="header-content">
+            <% if (liste=='' ){ %>
+                <p>Boutique :<span>Pas encore disponible</span></p>
+                <% } else if (liste[0].nom){ %>
+                    <p>Boutique <span>
+                            <%= liste[0].nom %>
+                        </span></p>
+                    <% } %>
+        </div>
+        <div class="trait_dessus"></div>
+        <div class="result">
+            <% if (nombre ) { %>
+                <p>Résultats : <span>
+                        <%= nombre%>
+                    </span></p>
+                <% } %>
+        </div>
+        <div class="trait_dessus"></div>
+
+    </div>
+    <div class="cathegorie-content">
+
+        <% if (liste=='' ) { %>
+            <div class="noresult">
+                <p>Aucun resultat trouvé(s) !</p>
+            </div>
+            <% } else if (liste ){%>
+                <% liste.forEach(function(article){ %>
+                    <div class="content-card">
+                        <div class="card-image">
+                            <a href="/detail/<%= article.id %>">
+                                <img src="/<%= article.image %>" alt="">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <p id="text">
+                                <%= article.nom %>
+                                    <%= article.model %> - <%= article.ecran %>" -<%= article.reseau %> - <%=
+                                                    article.rom %> - <%= article.ram %>
+                            </p>
+                            <p>
+                                <%= article.prix %> F CFA
+                            </p>
+                            <a href="/detail/<%= article.id %>" class="btndetail">Détail</a>
+                        </div>
+                    </div>
+                    <% }); %>
+                        <% } %>
+
+
+                            <!-- <div class="content-card">
+                    <div class="card-image">
+                      <a href="/detail">
+                        <img src="/images/3.jpg" alt="">
+                      </a>
+                    </div>
+                    <div class="card-body">
+                        <p>Apple IPhone 6 - 4.7" -4G - 16Go - 1Go</p>
+                        <p>100.000 F CFA</p>
+                        <a href="/detail" class="btndetail">Détail</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                      <a href="/detail">
+                        <img src="/images/1.jpg" alt="">
+                      </a>
+                    </div>
+                    <div class="card-body">
+                        <p>Apple IPhone 6 - 4.7" -4G - 16Go - 1Go</p>
+                        <p>100.000 F CFA</p>
+                        <a href="/detail" class="btndetail">Détail</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                      <a href="#">
+                        <img src="/images/2.jpg" alt="">
+                      </a>
+                    </div>
+                    <div class="card-body">
+                        <p>Apple IPhone 6 - 4.7" -4G - 16Go - 1Go</p>
+                        <p>100.000 F CFA</p>
+                        <a href="/detail" class="btndetail">Détail</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                      <a href="#">
+                        <img src="/images/4.webp" alt="">
+                      </a>
+                    </div>
+                    <div class="card-body">
+                        <p>Apple IPhone 6 - 4.7" -4G - 16Go - 1Go</p>
+                        <p>100.000 F CFA</p>
+                        <a href="/detail" class="btndetail">Détail</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                      <a href="#">
+                        <img src="/images/7.webp" alt="">
+                      </a>
+                    </div>
+                    <div class="card-body">
+                        <p>Apple IPhone 6 - 4.7" -4G - 16Go - 1Go</p>
+                        <p>100.000 F CFA</p>
+                        <a href="/detail" class="btndetail">Détail</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                      <a href="#">
+                        <img src="/images/3.jpg" alt="">
+                      </a>
+                    </div>
+                    <div class="card-body">
+                        <p>Apple IPhone 6 - 4.7" -4G - 16Go - 1Go</p>
+                        <p>100.000 F CFA</p>
+                        <a href="/detail" class="btndetail">Détail</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                      <a href="#">
+                        <img src="/images/4.webp" alt="">
+                      </a>
+                    </div>
+                    <div class="card-body">
+                        <p>Apple IPhone 6 - 4.7" -4G - 16Go - 1Go</p>
+                        <p>100.000 F CFA</p>
+                        <a href="/detail" class="btndetail">Détail</a>
+                    </div>
+                </div>
+                <div class="content-card">
+                    <div class="card-image">
+                      <a href="#">
+                        <img src="/images/1.jpg" alt="">
+                      </a>
+                    </div>
+                    <div class="card-body">
+                        <p>Apple IPhone 6 - 4.7" -4G - 16Go - 1Go</p>
+                        <p>100.000 F CFA</p>
+                        <a href="/detail" class="btndetail">Détail</a>
+                    </div>
+                </div> -->
+    </div>
+</div>

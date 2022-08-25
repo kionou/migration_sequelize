@@ -7,9 +7,16 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 let categorieRouter = require('./routes/categorie')
+let accueilRouter = require('./routes/accueil')
+let empruntRouter = require('./routes/emprunt')
+let adminRouter = require('./routes/admin')
 const sequelize = require('./database/connecterData');
 const  session = require('express-session');
 
+// const data = require('./database/connecterData');
+// const { Sequelize } = require('./models');
+// const cat = require('./models/users');
+// const categorie = cat(data,Sequelize).sync({force:true})
 var app = express();
 
 try {
@@ -27,16 +34,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+ app.use('/uploads',express.static('./uploads'))
 app.use(session({ 
       secret: 'keyboard cat',
       resave: false,
       saveUninitialized: true,
-      cookie: { maxAge: 60000 * 60 * 60 * 24 }
+      cookie: { maxAge: false}
 }))
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/categorie',categorieRouter)
+app.use('/profil', usersRouter);
+app.use('/categorie',categorieRouter);
+app.use('/Accueil',accueilRouter);
+app.use('/emprunt',empruntRouter)
+app.use('/Admin',adminRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
